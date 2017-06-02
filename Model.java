@@ -130,7 +130,7 @@ public class Model extends JFXPanel {
 
 		JMenu help = new JMenu("Help");
 		help.setBorderPainted(false);
-		JMenuItem hel = new JMenuItem("google");
+		JMenuItem hel = new JMenuItem("About");
 		hel.addActionListener(new ActionListener(){
 
 			@Override
