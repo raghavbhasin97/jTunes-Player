@@ -136,7 +136,7 @@ public class Model extends JFXPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-				java.awt.Desktop.getDesktop().browse(new URI("https://www.google.com"));
+				java.awt.Desktop.getDesktop().browse(new URI("https://github.com/raghavbhasin97/iTunes.jr"));
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
