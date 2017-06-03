@@ -1,8 +1,12 @@
-
-
 /**
+ * 
  * Creates a window and adds the JPanel object representing
  * the actual GUI.
+ * 
+ * @version 1.00
+ * @author RaghavBhasin
+ * @see https://github.com/raghavbhasin97/iTunes.jr
+ * @serial 1L
  */
 
 import java.awt.Dimension;
@@ -15,6 +19,14 @@ public class View extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Constructs the view object to represent the actual GUI.
+	 * 
+	 * @param title
+	 * @param panel
+	 * @param width
+	 * @param height
+	 */
 	public View(String title, JFXPanel panel, int width, int height){
 		super(title);
 		
@@ -23,7 +35,7 @@ public class View extends JFrame{
 		/* Adds panel to the frame */
 		setContentPane(panel); 
 		
-		/* Centralizing the frame (not necessary but nice) */
+		/* Center the frame */
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		int upperLeftCornerX = (screenSize.width - getWidth()) / 2;
 		int upperLeftCornerY = (screenSize.height - getHeight()) / 2;
