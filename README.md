@@ -21,13 +21,11 @@ A songs is associated with the following information:
   5). Release Date: The year in which the song was released. 
   6). Genre: The genre to which the song belongs.
   7). Path: The local path of the song on the computer.
- 
 ```
 
 #### Playlist
 A playlist is associated with the following information:
 ```
   1). Name: The title of the playlist
-  2). Playlist: A list of Songs that are a part of the playlist.
- 
+  2). Playlist: A list of Songs that are a part of the playlist. 
 ```
