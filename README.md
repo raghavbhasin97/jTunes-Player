@@ -29,3 +29,9 @@ A playlist is associated with the following information:
   1). Name: The title of the playlist
   2). Playlist: A list of Songs that are a part of the playlist. 
 ```
+#### Media Manager
+The Media Manager manages different songs and playlists that are a plart of the library. It is associated with the following information:
+```
+  1). Database: A list of all songs that are contained in the library.
+  2). Playlists: A list of all playlists that are a part of the library. 
+```
