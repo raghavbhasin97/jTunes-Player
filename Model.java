@@ -16,6 +16,8 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import javafx.embed.swing.JFXPanel;
 import javafx.scene.media.Media;
@@ -57,6 +59,7 @@ public class Model extends JFXPanel {
 	JMenu playlist;
 	String playlist_active = null;
 	JTextField playing;
+	JSlider volume;
 
 	/**
 	 * Method to setup the main GUI that user sees and attach ActionListeners
@@ -263,6 +266,27 @@ public class Model extends JFXPanel {
 		});
 		add(play);
 		add(stop);
+		
+		// Add volume control
+		volume = new JSlider(JSlider.VERTICAL);
+		volume.setBounds(616, 15, 20, 100);
+		volume.setValue(100);
+		volume.addChangeListener(new ChangeListener()
+				{
+
+				@Override
+				/**
+				 * Allows changing the volume of playing song
+				 */
+				public void stateChanged(ChangeEvent e) {
+					Double vol = ((double) volume.getValue())/100;
+					if(mediaPlayer != null)
+					{
+						mediaPlayer.setVolume(vol);
+					}
+				}			
+				});
+		add(volume);
 
 		// Add Label
 		JLabel playing_label = new JLabel("Playing: ");
@@ -278,7 +302,9 @@ public class Model extends JFXPanel {
 
 		// Scroll Pane added
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 80, 630, 280);
+		scrollPane.setBounds(10, 120, 630, 250);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane
+				.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setBorder(BorderFactory.createLoweredBevelBorder());
 		table = Table_with_data(manager.get_songs());
 		scrollPane.getViewport().add(table);
@@ -458,6 +484,9 @@ public class Model extends JFXPanel {
 		mediaPlayer = new MediaPlayer(hit);
 		// Play begins.
 		mediaPlayer.play();
+		// Set volume
+		Double vol = (double) volume.getValue();
+		mediaPlayer.setVolume(vol/100);
 	}
 
 	/**
