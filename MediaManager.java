@@ -20,7 +20,7 @@ public class MediaManager {
 
 	private TreeMap<String, Songs> database;
 	private ArrayList<String> playlists;
-	private String source = "/Users/RaghavBhasin/playlists/";
+	private String source = System.getProperty("user.home") + "/playlists/";
 
 	/**
 	 * Constructs a media manager object by loading data from storage.
