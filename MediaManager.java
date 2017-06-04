@@ -1,6 +1,8 @@
 import java.io.*;
 import java.util.ArrayList;
-import java.util.TreeMap;
+import java.util.HashMap;
+import java.util.Map;
+
 
 /**
  * This class represents the media manager. A media manager object contains 
@@ -9,7 +11,7 @@ import java.util.TreeMap;
  * = <Title of the song,Songs Object>} for efficient operations. This allows 
  * operation to have {@code O(n)} complexity instead.
  * 
- * @see TreeMap
+ * @see Map
  * @version 1.00
  * @author RaghavBhasin
  * @see https://github.com/raghavbhasin97/iTunes.jr
@@ -18,7 +20,7 @@ import java.util.TreeMap;
  */
 public class MediaManager {
 
-	private TreeMap<String, Songs> database;
+	private Map<String, Songs> database;
 	private ArrayList<String> playlists;
 	private String source = System.getProperty("user.home") + "/playlists/";
 
@@ -33,7 +35,7 @@ public class MediaManager {
 		} catch (ClassNotFoundException | IOException e) {
 			e.printStackTrace();
 			// If it fails to read database a new TreeMap is initialized.
-			database = new TreeMap<String, Songs>();
+			database = new HashMap<String, Songs>();
 		}
 		
 		//Try to load playlist names from playlist.itunesjr
@@ -128,7 +130,7 @@ public class MediaManager {
 	 * This method is outer world's access to songs in database.
 	 * @return a map of songs in the database
 	 */
-	TreeMap<String, Songs> getDB() {
+	Map<String, Songs> getDB() {
 		return database;
 	}
 
@@ -144,7 +146,7 @@ public class MediaManager {
 				FileInputStream(new File("database.itunesjr")));
 		@SuppressWarnings("unchecked")
 		//Reads the object and initializes the current database from it.
-		TreeMap<String, Songs> readObject = (TreeMap<String, Songs>)
+		Map<String, Songs> readObject = (Map<String, Songs>)
 		object_reader.readObject();
 		database = readObject;
 		object_reader.close();
