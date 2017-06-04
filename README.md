@@ -6,3 +6,20 @@ This project implements a media manager that mimics `iTunes`. The tool allows Mp
 
 ![sample](https://cloud.githubusercontent.com/assets/19142014/26754326/6cf2180c-4896-11e7-9cba-ea0d5b0c3ddc.png)
 
+
+
+Media Components
+----------------
+
+#### Songs
+A songs is associated with the following information:
+```
+  1). Title: Name of the song. 
+  2). Artist: The Artist/singer of the song. 
+  3). Album: The Album of which this song is a part. 
+  4). Duration: Play time of the track in seconds. 
+  5). Release Date: The year in which the song was released. 
+  6). Genre: The genre to which the song belongs.
+  7). Path: The local path of the song on the computer.
+ 
+```
