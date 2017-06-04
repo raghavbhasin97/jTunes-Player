@@ -259,7 +259,6 @@ public class Model extends JFXPanel {
 			 * Allows playing media to be stopped
 			 */
 			public void actionPerformed(ActionEvent e) {
-			System.out.println("Stopping");
 			stop.setSelected(false);
 			play_stop();
 			}
@@ -543,7 +542,7 @@ public class Model extends JFXPanel {
 		};
 
 		// Setup the table view
-		table.setPreferredScrollableViewportSize(new Dimension(600, 280));
+		table.setPreferredScrollableViewportSize(new Dimension(600, 250));
 		table.setFillsViewportHeight(true);
 		table.setGridColor(Color.BLACK);
 		table.setForeground(Color.BLUE);
