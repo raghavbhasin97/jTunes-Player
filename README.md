@@ -7,12 +7,11 @@ This project implements a media manager that mimics `iTunes`. The tool allows Mp
 ![sample](https://cloud.githubusercontent.com/assets/19142014/26754326/6cf2180c-4896-11e7-9cba-ea0d5b0c3ddc.png)
 
 
-
 Media Components
 ----------------
 
 #### Songs
-A songs is associated with the following information:
+A song is associated with the following information:
 ```
   1). Title: Name of the song. 
   2). Artist: The Artist/singer of the song. 
@@ -34,4 +33,11 @@ The Media Manager manages different songs and playlists that are a plart of the 
 ```
   1). Database: A list of all songs that are contained in the library.
   2). Playlists: A list of all playlists that are a part of the library. 
+```
+
+Measures for efficiency
+-----------------------
+```
+  1). Map: The database is stored as a map with song name as key and song object as the value.
+  2). Playlists: Playlists only store the name of the song, the actual song object is retrived from the database. Since, the database is a map, retruval operation occurs in O(1).
 ```
