@@ -41,3 +41,7 @@ Measures for efficiency
   1). Map: The database is stored as a map with song name as key and song object as the value.
   2). Playlists: Playlists only store the name of the song, the actual song object is retrived from the database. Since, the database is a map, retruval operation occurs in O(1).
 ```
+File Paths
+-----------
+
+Data files are stored in the users home directory by fetching the info using `System.getProperty("user.home")`
