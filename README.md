@@ -1,4 +1,4 @@
-# iTunes.jr
+# jTunes Player
 
 Introduction
 ------------
