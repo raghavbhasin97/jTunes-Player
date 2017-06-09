@@ -40,7 +40,7 @@ import com.mpatric.mp3agic.*;
  * a jar file. @see https://github.com/mpatric/mp3agic </p>
  * @version 1.00
  * @author RaghavBhasin
- * @see https://github.com/raghavbhasin97/iTunes.jr
+ * @see https://github.com/raghavbhasin97/jTunes-Player
  * @serial 1L
  *
  */
@@ -197,7 +197,7 @@ public class Model extends JFXPanel {
 			public void actionPerformed(ActionEvent e) {
 			try {
 				java.awt.Desktop.getDesktop().browse(new 
-						URI("https://github.com/raghavbhasin97/iTunes.jr"));
+						URI("https://github.com/raghavbhasin97/jTunes-Player"));
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			} catch (URISyntaxException e1) {
@@ -207,7 +207,7 @@ public class Model extends JFXPanel {
 			}
 
 		});
-		JMenuItem iTunes = new JMenuItem("iTunes");
+		JMenuItem iTunes = new JMenuItem("Official iTunes");
 		iTunes.addActionListener(new ActionListener() {
 
 			@Override
@@ -347,7 +347,7 @@ public class Model extends JFXPanel {
 	 * This class implements ActionListener for creating a new playlist.
 	 * @version 1.00
 	 * @author RaghavBhasin
-	 * @see https://github.com/raghavbhasin97/iTunes.jr
+	 * @see https://github.com/raghavbhasin97/jTunes-Player
 	 *
 	 */
 	private class playlist implements ActionListener {
@@ -380,7 +380,7 @@ public class Model extends JFXPanel {
 	 * This class implements ActionListener for removing a song.
 	 * @version 1.00
 	 * @author RaghavBhasin
-	 * @see https://github.com/raghavbhasin97/iTunes.jr
+	 * @see https://github.com/raghavbhasin97/jTunes-Player
 	 *
 	 */
 	private class remove_song implements ActionListener {
@@ -419,7 +419,7 @@ public class Model extends JFXPanel {
 	 * playlist.
 	 * @version 1.00
 	 * @author RaghavBhasin
-	 * @see https://github.com/raghavbhasin97/iTunes.jr
+	 * @see https://github.com/raghavbhasin97/jTunes-Player
 	 *
 	 */
 	private class playlist_handler implements ActionListener {
@@ -563,7 +563,7 @@ public class Model extends JFXPanel {
 	 *  ID3v tags to get info to add song to our database.
 	 * @version 1.00
 	 * @author RaghavBhasin
-	 * @see https://github.com/raghavbhasin97/iTunes.jr
+	 * @see https://github.com/raghavbhasin97/jTunes-Player
 	 *
 	 */
 	class Add_song extends JFXPanel {
@@ -580,8 +580,7 @@ public class Model extends JFXPanel {
 			//Gets the image to add for songs to be dragged on.
 			BufferedImage song = null;
 			try {
-			song = ImageIO.read(new File("/Users/RaghavBhasin/Documents/workspace"
-					+ "/ItunesJr/Resources/addsong.png"));
+			song = ImageIO.read(new File("/Users/RaghavBhasin/Documents/workspace/jTunes/Resources/addsong.png"));
 			} catch (IOException e) {
 			e.printStackTrace();
 			}
@@ -682,7 +681,7 @@ public class Model extends JFXPanel {
 		 * This class implements action listener that invokes the add operation.
 		 * @version 1.00
 		 * @author RaghavBhasin
-		 * @see https://github.com/raghavbhasin97/iTunes.jr
+		 * @see https://github.com/raghavbhasin97/jTunes-Player
 		 *
 		 */
 		class add implements ActionListener {
@@ -721,7 +720,7 @@ public class Model extends JFXPanel {
 	 * provided by the Add_song class.
 	 * @version 1.00
 	 * @author RaghavBhasin
-	 * @see https://github.com/raghavbhasin97/iTunes.jr
+	 * @see https://github.com/raghavbhasin97/jTunes-Player
 	 *
 	 */
 	class Song implements ActionListener {

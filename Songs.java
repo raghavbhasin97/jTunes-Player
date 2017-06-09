@@ -1,5 +1,5 @@
 /**
- * This class represents a song in the context of the iTunesjr media manager. A
+ * This class represents a song in the context of the jTunes media manager. A
  * song consists of: 
  * 1). Title: Name of the song. 
  * 2). Artist: The Artist/singer of the song. 
@@ -13,7 +13,7 @@
  * 
  * @version 1.00
  * @author RaghavBhasin
- * @see https://github.com/raghavbhasin97/iTunes.jr
+ * @see https://github.com/raghavbhasin97/jTunes-Player
  * @serial 1L
  */
 

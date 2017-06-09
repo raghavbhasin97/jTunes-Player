@@ -18,7 +18,7 @@ import java.util.ArrayList;
  * 
  * @version 1.00
  * @author RaghavBhasin
- * @see https://github.com/raghavbhasin97/iTunes.jr
+ * @see https://github.com/raghavbhasin97/jTunes-Player
  * @serial 1L
  */
 public class Playlist implements Serializable {

@@ -14,7 +14,7 @@ import java.util.Map;
  * @see Map
  * @version 1.00
  * @author RaghavBhasin
- * @see https://github.com/raghavbhasin97/iTunes.jr
+ * @see https://github.com/raghavbhasin97/jTunes-Player
  * @serial 1L
  *
  */
@@ -29,7 +29,7 @@ public class MediaManager {
 	 * 
 	 */
 	MediaManager() {
-		// Try to load songs data from database.itunesjr
+		// Try to load songs data from database.jtunes
 		try {
 			read_data();
 		} catch (ClassNotFoundException | IOException e) {
@@ -38,7 +38,7 @@ public class MediaManager {
 			database = new HashMap<String, Songs>();
 		}
 		
-		//Try to load playlist names from playlist.itunesjr
+		//Try to load playlist names from playlist.jtunes
 		try {
 			read_playlist();
 		} catch (ClassNotFoundException | IOException e) {
@@ -57,7 +57,8 @@ public class MediaManager {
 	 */
 	public ArrayList<String> getPlaylists() {
 		return playlists;
-	}
+	}	
+
 
 	/**
 	 * This method adds a new song to the database with all the below parameters.
@@ -97,31 +98,31 @@ public class MediaManager {
 	}
 
 	/**
-	 * This method saves the current database state (database.itunesjr) to the 
+	 * This method saves the current database state (database.jtunes) to the 
 	 * storage.
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
 	void save_data() throws FileNotFoundException, IOException {
-		// Opens the file database.itunesjr to write the database state
+		// Opens the file database.jtunes to write the database state
 		// If previous state exists, it is overwritten. 
 		ObjectOutputStream object_writer = new ObjectOutputStream(new 
-				FileOutputStream("database.itunesjr"));
+				FileOutputStream("database.jtunes"));
 		object_writer.writeObject(database);
 		object_writer.close();
 	}
 
 	/**
-	 * This method save the current playlist state (playlists.itunesjr) to the
+	 * This method save the current playlist state (playlists.jtunes) to the
 	 * storage.
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
 	void save_playlist() throws FileNotFoundException, IOException {
-	// Opens the file playlists.itunesjr to write the playlist state
+	// Opens the file playlists.jtunes to write the playlist state
 	// If previous state exists, it is overwritten. 
 		ObjectOutputStream object_writer_pl = new ObjectOutputStream(
-			new FileOutputStream(source + "playlists.itunesjr"));
+			new FileOutputStream(source + "playlists.jtunes"));
 		object_writer_pl.writeObject(playlists);
 		object_writer_pl.close();
 	}
@@ -135,7 +136,7 @@ public class MediaManager {
 	}
 
 	/**
-	 * This method loads the current database state (database.itunesjr) from the
+	 * This method loads the current database state (database.jtunes) from the
 	 * storage.
 	 * @throws ClassNotFoundException
 	 * @throws IOException
@@ -143,7 +144,7 @@ public class MediaManager {
 	void read_data() throws ClassNotFoundException, IOException {
 		//Opens the database.tunesjr file
 		ObjectInputStream object_reader = new ObjectInputStream(new 
-				FileInputStream(new File("database.itunesjr")));
+				FileInputStream(new File("database.jtunes")));
 		@SuppressWarnings("unchecked")
 		//Reads the object and initializes the current database from it.
 		Map<String, Songs> readObject = (Map<String, Songs>)
@@ -153,7 +154,7 @@ public class MediaManager {
 	}
 
 	/**
-	 * This method loads the current playlist state (playlists.itunesjr) from the
+	 * This method loads the current playlist state (playlists.jtunes) from the
 	 * storage.
 	 * @throws ClassNotFoundException
 	 * @throws IOException
@@ -162,7 +163,7 @@ public class MediaManager {
 	void read_playlist() throws FileNotFoundException, IOException, 
 	ClassNotFoundException {
 		ObjectInputStream object_reader_pl = new ObjectInputStream(
-			new FileInputStream(new File(source + "playlists.itunesjr")));
+			new FileInputStream(new File(source + "playlists.jtunes")));
 		@SuppressWarnings("unchecked")
 		//Reads the object and initializes the current playlists list from it.
 		ArrayList<String> readObject_pl = (ArrayList<String>) 
