@@ -40,7 +40,7 @@ Measures for efficiency
 ```
   1). Map: The database is stored as a map with song name as key and song object as the value.
   2). Playlists: Playlists only store the name of the song, the actual song object is retrived from the database. 
-       Since, the database is a map, retrival operation occurs in O(1) (**mostly**).
+       Since, the database is a map, retrival operation occurs in O(1) ##### (mostly).
 ```
 File Paths
 -----------
