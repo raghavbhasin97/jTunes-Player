@@ -6,6 +6,9 @@ This project implements a media manager that mimics `iTunes`. The tool allows Mp
 
 ![sample](https://user-images.githubusercontent.com/19142014/26969942-1df3797e-4d25-11e7-95f7-1090005288f0.png)
 
+Motivation behind this project
+------------------------------
+This project was created when I had the idea of implementing a small-scale version of iTunes. I created the jTunes player to test my knowledge of Java, and put object-oriented paradigm along with MVC design pattern into the context of real life. 
 
 Media Components
 ----------------
