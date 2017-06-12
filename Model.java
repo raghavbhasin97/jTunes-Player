@@ -589,7 +589,7 @@ public class Model extends JFXPanel {
 			add_song.setBounds(175, 15, 50, 50);
 			// Setting up the drop target
 			add_song.setDropTarget(new DropTarget() {
-			private static final long serialVersionUID = -4788235742917964869L;
+			private static final long serialVersionUID = 1L;
 			/**
 			 * Allows to create a drop event that extracts ID3v tags and 
 			 * adds the song to database.
