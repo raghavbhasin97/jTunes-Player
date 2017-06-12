@@ -2,7 +2,7 @@
 
 Introduction
 ------------
-This project implements a media manager that mimics `iTunes`. The tool allows Mp3 files to added to song library and playlists created with those songs. It offers different features such as removing songs, creating playlists with songs and other feautres. Songs can only be added via drag and drop, and other information such as title, artist, album etc. is extracted from the Mp3 header via `ID3v tags`. The library used is [mp3agic](https://github.com/mpatric/mp3agic) by Michael Patricios (Copyright (c) 2006-2017). 
+This project implements a media manager that mimics `iTunes`. This tool supports adding Mp3 files to the song library and creating playlists. It offers different features such as removing songs, creating playlists with songs in the library, and some other feautres. Songs can only be added via drag and drop, and other information such as title, artist, album etc. is extracted from the Mp3 header via `ID3v tags`. The library used is [mp3agic](https://github.com/mpatric/mp3agic) by Michael Patricios (Copyright (c) 2006-2017). 
 
 ![sample](https://user-images.githubusercontent.com/19142014/26969942-1df3797e-4d25-11e7-95f7-1090005288f0.png)
 
@@ -33,7 +33,7 @@ A playlist is associated with the following information:
   2). Playlist: A list of Songs that are a part of the playlist. 
 ```
 #### Media Manager
-The Media Manager manages different songs and playlists that are a plart of the library. It is associated with the following information:
+The Media Manager manages different songs and playlists that are a part of the library. It is associated with the following information:
 ```
   1). Database: A list of all songs that are contained in the library.
   2). Playlists: A list of all playlists that are a part of the library. 
