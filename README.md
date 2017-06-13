@@ -49,7 +49,7 @@ Measures for efficiency
 
 Safety and Security
 ------------------
-The best part of this media player is that it's safe. Every measure has been taken to handel unexpected cases to prevent crashes. Moreover, since songs can be added only via drag/drop, and menu (in case of playlists) it is extremely safe in terms og usage. As far as security is concerned, it can only read and write data files associated with this program. It has no acess to anything outside the playlists folder.
+The best part of this media player is that it's safe. Every measure has been taken to handel unexpected cases to prevent crashes. Moreover, since songs can be added only via drag/drop, and menu (in case of playlists) it is extremely safe in terms og usage. As far as security is concerned, it can only read and write data files associated with this program. It has no acess to anything outside the .jTunes folder.
 
 File Paths
 -----------
