@@ -107,7 +107,7 @@ public class MediaManager {
 		// Opens the file database.jtunes to write the database state
 		// If previous state exists, it is overwritten. 
 		ObjectOutputStream object_writer = new ObjectOutputStream(new 
-				FileOutputStream("database.jtunes"));
+				FileOutputStream(source + "database.jtunes"));
 		object_writer.writeObject(database);
 		object_writer.close();
 	}
@@ -144,7 +144,7 @@ public class MediaManager {
 	void read_data() throws ClassNotFoundException, IOException {
 		//Opens the database.tunesjr file
 		ObjectInputStream object_reader = new ObjectInputStream(new 
-				FileInputStream(new File("database.jtunes")));
+				FileInputStream(new File(source + "database.jtunes")));
 		@SuppressWarnings("unchecked")
 		//Reads the object and initializes the current database from it.
 		Map<String, Songs> readObject = (Map<String, Songs>)

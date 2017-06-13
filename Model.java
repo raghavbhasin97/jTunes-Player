@@ -10,20 +10,34 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.List;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JSlider;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.JToggleButton;
+import javax.swing.ListSelectionModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
+import com.mpatric.mp3agic.ID3v1;
+import com.mpatric.mp3agic.ID3v2;
+import com.mpatric.mp3agic.InvalidDataException;
+import com.mpatric.mp3agic.Mp3File;
 
 import javafx.embed.swing.JFXPanel;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-
-import com.mpatric.mp3agic.*;
 
 /**
  * Creates the model component of the MVC design. Creates the GUI that user can
@@ -60,6 +74,7 @@ public class Model extends JFXPanel {
 	String playlist_active = null;
 	JTextField playing;
 	JSlider volume;
+	View about_frame;
 
 	/**
 	 * Method to setup the main GUI that user sees and attach ActionListeners
@@ -187,48 +202,9 @@ public class Model extends JFXPanel {
 		// Setup the help menu
 		JMenu help = new JMenu("Help");
 		help.setBorderPainted(false);
-		JMenuItem hel = new JMenuItem("About");
-		hel.addActionListener(new ActionListener() {
-
-			@Override
-			/**
-			 * Allows navigation to the github page for more info.
-			 */
-			public void actionPerformed(ActionEvent e) {
-			try {
-				java.awt.Desktop.getDesktop().browse(new 
-						URI("https://github.com/raghavbhasin97/jTunes-Player"));
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			} catch (URISyntaxException e1) {
-				e1.printStackTrace();
-			}
-
-			}
-
-		});
-		JMenuItem iTunes = new JMenuItem("Official iTunes");
-		iTunes.addActionListener(new ActionListener() {
-
-			@Override
-			/**
-			 * Allows navigation to the iTunes official page (Apple iTunes).
-			 */
-			public void actionPerformed(ActionEvent e) {
-			try {
-				java.awt.Desktop.getDesktop().browse(new 
-						URI("https://www.apple.com/in/itunes/music/"));
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			} catch (URISyntaxException e1) {
-				e1.printStackTrace();
-			}
-
-			}
-
-		});
-		help.add(iTunes);
-		help.add(hel);
+		JMenuItem about = new JMenuItem("About");
+		about.addActionListener(new About(new AboutGui()));
+		help.add(about);
 
 		// Add and possiton the toolbar.
 		toolbar.add(file);
@@ -589,7 +565,7 @@ public class Model extends JFXPanel {
 			add_song.setBounds(175, 15, 50, 50);
 			// Setting up the drop target
 			add_song.setDropTarget(new DropTarget() {
-			private static final long serialVersionUID = 1L;
+			private static final long serialVersionUID = -4788235742917964869L;
 			/**
 			 * Allows to create a drop event that extracts ID3v tags and 
 			 * adds the song to database.
@@ -748,4 +724,104 @@ public class Model extends JFXPanel {
 		}
 	}
 
+	
+	/**
+	 * Controls the popup that displays the about us information regarding this
+	 * media player such as liscence and version.
+	 * @version 1.00
+	 * @author RaghavBhasin
+	 * @see https://github.com/raghavbhasin97/jTunes-Player
+	 *
+	 */
+	class About implements ActionListener {
+		JFXPanel gui;
+		
+		// Get the main GUI as object init parameter.
+		About(JFXPanel gui) {
+			this.gui = gui;
+		}
+
+		/**
+		 * This allows new window to be displayed.
+		 */
+		public void actionPerformed(ActionEvent e) {
+			javax.swing.SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				int frameWidth = 400, frameHeight = 320;
+				about_frame = new View("About", gui, frameWidth
+						, frameHeight);
+				about_frame.setVisible(true);
+				about_frame.setResizable(false);
+			}
+			});
+
+		}
+	}
+	/**
+	 * This class sets up the GUI for about page 
+	 * @version 1.00
+	 * @author RaghavBhasin
+	 * @see https://github.com/raghavbhasin97/jTunes-Player
+	 *
+	 */
+	class AboutGui extends JFXPanel {
+		private static final long serialVersionUID = 1L;
+		
+		AboutGui()
+		{	
+			// Initialize the main setup
+			setLayout(null);
+			// Setup labels with add text
+			JLabel version = new JLabel("jTunes Player Version 1.0.0");
+			JLabel copyright = new JLabel("Copyright © 2017 Raghav Bhasin");
+			JLabel rights = new JLabel("All Rights Reserved");
+			JLabel description = new JLabel("A program to manage and play your"
+					+ " favourite songs");
+			JLabel report = new JLabel("Report any problems to email address belo"
+					+ "w.");
+			JLabel email = new JLabel("raghavbhasin97@gmail.com");
+			JLabel disclamer = new JLabel("Disclaimer: This software is provided "
+					+ "\"As is\"");
+			JLabel disclaimer2 = new JLabel("without any expressed or implied war"
+					+ "ranty.");
+			JButton cancel = new JButton("Cancel");
+			
+			// Set bound (place the labels) 
+			version.setBounds(30, 20, 300, 20);
+			copyright.setBounds(30, 35, 300, 20);
+			rights.setBounds(30,50,300,20);
+			description.setBounds(30, 80, 350, 20);
+			report.setBounds(30,125,350,20);
+			email.setBounds(30,140,350,20);
+			disclamer.setBounds(30, 190, 350, 20);
+			disclaimer2.setBounds(30, 205, 350, 20);
+			cancel.setBounds(300, 250, 80, 30);
+			
+			//Setup Action listener
+			cancel.addActionListener(new ActionListener()
+					{
+
+				  /**
+				   * This allows cancel button to be active and dismiss the about
+				   * frame.
+				   */
+					public void actionPerformed(ActionEvent e) {
+						about_frame.dispose();
+					}
+				
+					});
+			
+			//Add to the frame 
+			add(version);
+			add(copyright);
+			add(rights);
+			add(description);
+			add(report);
+			add(email);
+			add(disclamer);
+			add(disclaimer2);
+			add(cancel);
+		}
+	}
+	
 }
