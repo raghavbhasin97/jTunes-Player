@@ -2,7 +2,7 @@
 
 Introduction
 ------------
-This project implements a media manager that mimics `iTunes`. This tool supports adding Mp3 files to the song library and creating playlists. It offers different features such as removing songs, creating playlists with songs in the library, and some other feautres. Songs can only be added via drag and drop, and other information such as title, artist, album etc. is extracted from the Mp3 header via `ID3v tags`. The library used is [mp3agic](https://github.com/mpatric/mp3agic) by Michael Patricios (Copyright (c) 2006-2017). The best part of this media player is that it's safe. Every measure has been taken to handel unexpected cases to prevent crashes. Moreover, since songs can be added only via drag/drop, and menu (in case of playlists) it is sextremely safe.
+This project implements a media manager that mimics `iTunes`. This tool supports adding Mp3 files to the song library and creating playlists. It offers different features such as removing songs, creating playlists with songs in the library, and some other feautres. Songs can only be added via drag and drop, and other information such as title, artist, album etc. is extracted from the Mp3 header via `ID3v tags`. The library used is [mp3agic](https://github.com/mpatric/mp3agic) by Michael Patricios (Copyright (c) 2006-2017). 
 
 ![sample](https://user-images.githubusercontent.com/19142014/26969942-1df3797e-4d25-11e7-95f7-1090005288f0.png)
 
@@ -46,6 +46,11 @@ Measures for efficiency
   2). Playlists: Playlists only store the name of the song, the actual song object is retrived from the database. 
        Since, the database is a map, retrival operation occurs in O(1) (mostly).
 ```
+
+Safety and Security
+------------------
+The best part of this media player is that it's safe. Every measure has been taken to handel unexpected cases to prevent crashes. Moreover, since songs can be added only via drag/drop, and menu (in case of playlists) it is extremely safe in terms og usage. As far as security is concerned, it can only read and write data files associated with this program. It has no acess to anything outside the playlists folder.
+
 File Paths
 -----------
 
