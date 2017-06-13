@@ -10,6 +10,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
 
 import javax.imageio.ImageIO;
@@ -556,7 +557,8 @@ public class Model extends JFXPanel {
 			//Gets the image to add for songs to be dragged on.
 			BufferedImage song = null;
 			try {
-			song = ImageIO.read(new File("/Users/RaghavBhasin/Documents/workspace/jTunes/Resources/addsong.png"));
+				URL songs = new URL("https://i.imgsafe.org/fbc076f79c.png");
+			song = ImageIO.read(songs);
 			} catch (IOException e) {
 			e.printStackTrace();
 			}
@@ -565,7 +567,7 @@ public class Model extends JFXPanel {
 			add_song.setBounds(175, 15, 50, 50);
 			// Setting up the drop target
 			add_song.setDropTarget(new DropTarget() {
-			private static final long serialVersionUID = -4788235742917964869L;
+			private static final long serialVersionUID = 1L;
 			/**
 			 * Allows to create a drop event that extracts ID3v tags and 
 			 * adds the song to database.
@@ -692,7 +694,7 @@ public class Model extends JFXPanel {
 	}
 
 	/**
-	 * Allows adding the song by creating a new window and initializing thr GUI
+	 * Allows adding the song by creating a new window and initializing the GUI
 	 * provided by the Add_song class.
 	 * @version 1.00
 	 * @author RaghavBhasin
@@ -727,7 +729,7 @@ public class Model extends JFXPanel {
 	
 	/**
 	 * Controls the popup that displays the about us information regarding this
-	 * media player such as liscence and version.
+	 * media player such as license and version.
 	 * @version 1.00
 	 * @author RaghavBhasin
 	 * @see https://github.com/raghavbhasin97/jTunes-Player
