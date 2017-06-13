@@ -2,7 +2,7 @@
 
 Introduction
 ------------
-This project implements a media manager that mimics `iTunes`. This tool supports adding Mp3 files to the song library and creating playlists. It offers different features such as removing songs, creating playlists with songs in the library, and some other feautres. Songs can only be added via drag and drop, and other information such as title, artist, album etc. is extracted from the Mp3 header via `ID3v tags`. The library used is [mp3agic](https://github.com/mpatric/mp3agic) by Michael Patricios (Copyright (c) 2006-2017). 
+This project implements a media manager that mimics `iTunes`. This tool supports adding Mp3 files to the song library and creating playlists. It offers different features such as removing songs, creating playlists with songs in the library, and some other feautres. Songs can only be added via drag and drop, and other information such as title, artist, album etc. is extracted from the Mp3 header via `ID3v tags`. The library used is [mp3agic](https://github.com/mpatric/mp3agic) by Michael Patricios (Copyright (c) 2006-2017). The best part of this media player is that it's safe. Every measure has been taken to handel unexpected cases to prevent crashes. Moreover, since songs can be added only via drag/drop, and menu (in case of playlists) it is sextremely safe.
 
 ![sample](https://user-images.githubusercontent.com/19142014/26969942-1df3797e-4d25-11e7-95f7-1090005288f0.png)
 
