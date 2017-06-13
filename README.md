@@ -54,4 +54,4 @@ The best part of this media player is that it's safe. Every measure has been tak
 File Paths
 -----------
 
-Data files are stored in the user's home directory by fetching the info using `System.getProperty("user.home")`.
+Data files are stored in .jTunes folder in the user's home directory by fetching the info using `System.getProperty("user.home")`.
