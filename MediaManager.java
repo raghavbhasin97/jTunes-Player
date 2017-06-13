@@ -22,7 +22,7 @@ public class MediaManager {
 
 	private Map<String, Songs> database;
 	private ArrayList<String> playlists;
-	private String source = System.getProperty("user.home") + "/playlists/";
+	private String source = System.getProperty("user.home") + "/.jTunes/";
 
 	/**
 	 * Constructs a media manager object by loading data from storage.
