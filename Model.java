@@ -76,6 +76,7 @@ public class Model extends JFXPanel {
 	JTextField playing;
 	JSlider volume;
 	View about_frame;
+	private String source = System.getProperty("user.home") + "/.jTunes/";
 
 	/**
 	 * Method to setup the main GUI that user sees and attach ActionListeners
@@ -242,6 +243,7 @@ public class Model extends JFXPanel {
 		});
 		add(play);
 		add(stop);
+		
 		
 		// Add volume control
 		volume = new JSlider(JSlider.VERTICAL);
@@ -556,12 +558,22 @@ public class Model extends JFXPanel {
 
 			//Gets the image to add for songs to be dragged on.
 			BufferedImage song = null;
-			try {
-				URL songs = new URL("https://i.imgsafe.org/fbc076f79c.png");
-			song = ImageIO.read(songs);
+			
+			//Try reading the file from source directory 
+			 try {
+			song = ImageIO.read(new File(source + "addsong.png"));
 			} catch (IOException e) {
-			e.printStackTrace();
+				//If fails, try reading from the web and save it locally
+				URL songs;
+				try {
+					songs = new URL("https://i.imgsafe.org/fbc076f79c.png");
+					song = ImageIO.read(songs);
+					ImageIO.write(song, "png", new File(source + "addsong.png"));
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}	
 			}
+		
 			// Add the image
 			JLabel add_song = new JLabel(new ImageIcon(song));
 			add_song.setBounds(175, 15, 50, 50);
