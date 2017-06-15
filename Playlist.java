@@ -24,7 +24,7 @@ import java.util.ArrayList;
 public class Playlist implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-   private String source = System.getProperty("user.home") + "/jTunes/";
+   private String source = System.getProperty("user.home") + "/.jTunes/";
 	private String name;
 	private ArrayList<String> playlist;
 
