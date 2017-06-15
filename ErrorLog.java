@@ -69,7 +69,8 @@ public class ErrorLog {
 	 */
 	public void close() {
 		try {
-			write("Terminating jTunes player.");
+			write("Terminating jTunes player.\n\n"
+			+ "------------------------------------------------------------\n");
 			writer.close();
 		} catch (IOException e) {
 		// Unresolvable error not likely to ever happen.
