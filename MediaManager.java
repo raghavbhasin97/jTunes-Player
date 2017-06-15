@@ -23,31 +23,32 @@ public class MediaManager {
 	private Map<String, Songs> database;
 	private ArrayList<String> playlists;
 	private String source = System.getProperty("user.home") + "/.jTunes/";
+	private ErrorLog logger = null;
 
 	/**
 	 * Constructs a media manager object by loading data from storage.
 	 * 
 	 */
-	MediaManager() {
+	MediaManager(ErrorLog logger) {
+		this.logger = logger;
 		// Try to load songs data from database.jtunes
 		try {
 			read_data();
 		} catch (ClassNotFoundException | IOException e) {
-			e.printStackTrace();
+			logger.write("Faied to read database");
 			// If it fails to read database a new TreeMap is initialized.
 			database = new HashMap<String, Songs>();
+			logger.write("Created new database");
 		}
 		
 		//Try to load playlist names from playlist.jtunes
 		try {
 			read_playlist();
 		} catch (ClassNotFoundException | IOException e) {
-			e.printStackTrace();
+			logger.write("Faied to read playlists");
 		// If it fails to read the file, a new Arraylist is initialized.
 			playlists = new ArrayList<String>();
-		// Making a new directory in the source to save all data.
-			File dir = new File(source);
-			dir.mkdir();
+			logger.write("Created new playlist base");
 		}
 	}
 
@@ -77,10 +78,11 @@ public class MediaManager {
 		if (!exists(title)) {
 			database.put(title, new Songs(title, artistName, releaseDate, 
 					albumName, durationInSecs, genre, path));
+			logger.write("Added song " + title + "to the library");
 			try {
 			save_data();
 			} catch (IOException e) {
-			e.printStackTrace();
+			logger.write("failed to save song library Error!");
 			}
 		}
 
@@ -254,6 +256,7 @@ public class MediaManager {
 		Playlist new_Playlist = new Playlist(playlistName);
 		new_Playlist.save();
 		save_playlist();
+		logger.write("Added playlist " + playlistName + "to the database");
 	}
 
 	/**
@@ -285,7 +288,7 @@ public class MediaManager {
 				//save the updated list to storage.
 				save_playlist();
 			} catch (IOException e) {
-				e.printStackTrace();
+				logger.write("Error occured while deleting playlist " + name);
 			}
 			}
 		}
@@ -318,7 +321,8 @@ public class MediaManager {
 	     // Remove the song from a particular playlist.
 			removesongFromPl(name, playlist);
 			} catch (ClassNotFoundException | IOException e) {
-			e.printStackTrace();
+			logger.write("Error occured while deleting song" + name 
+					+ "from the playlist " + playlist);
 			}
 			return;
 		}
@@ -331,11 +335,14 @@ public class MediaManager {
 			try {
 			removesongFromPl(name, s);
 			} catch (FileNotFoundException e) {
-			e.printStackTrace();
+				logger.write("Error occured while deleting song" + name 
+						+ "from the playlist " + playlist);
 			} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+				logger.write("Error occured while deleting song" + name 
+						+ "from the playlist " + playlist);
 			} catch (IOException e) {
-			e.printStackTrace();
+				logger.write("Error occured while deleting song" + name 
+						+ "from the playlist " + playlist);
 			}
 		}
 
@@ -343,7 +350,8 @@ public class MediaManager {
 		try {
 			save_data();
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.write("Error occured while deleting song" + name 
+					+ "from the library ");
 		}
 	}
 
@@ -441,7 +449,7 @@ public class MediaManager {
 			this.save_data();
 		} catch (IOException e) {
 
-			e.printStackTrace();
+			logger.write("Error occured while clearing songs library");
 		}
 	}
 	

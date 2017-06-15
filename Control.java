@@ -19,7 +19,7 @@ public class Control {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				int frameWidth = 650, frameHeight = 400;
-				JFXPanel actualGUI = new Model();
+				JFXPanel actualGUI = new Model(new ErrorLog());
 				View frame = new View("jTunes Player", actualGUI, frameWidth
 						                , frameHeight);
 				frame.setVisible(true);

@@ -62,7 +62,8 @@ import javafx.scene.media.MediaPlayer;
 public class Model extends JFXPanel {
 	private static final long serialVersionUID = 1L;
 
-	MediaManager manager = new MediaManager();
+	MediaManager manager = null;
+	ErrorLog logger = null;
 	MediaPlayer mediaPlayer = null;
 	String song_to_play = "";
 	JToggleButton play;
@@ -82,8 +83,10 @@ public class Model extends JFXPanel {
 	 * Method to setup the main GUI that user sees and attach ActionListeners
 	 * to handle user interactions.
 	 */
-	public Model() {
+	public Model(ErrorLog logger) {
 		// Initialize the main setup
+		manager = new MediaManager(logger);
+		this.logger = logger;
 		setLayout(null);
 
 		// Create a toolbar to prove user different options
@@ -105,6 +108,7 @@ public class Model extends JFXPanel {
 			 * Allows an exit action to be created.
 			 */
 			public void actionPerformed(ActionEvent e) {
+			logger.close();
 			System.exit(ABORT);
 
 			}
@@ -179,7 +183,7 @@ public class Model extends JFXPanel {
 					manager.createPlaylist(play_list_name);
 					manager.addSongToPlaylist(play_list_name, name);
 				} catch (IOException e2) {
-					e2.printStackTrace();
+					logger.write("Error occured while adding song to playlist");
 				} catch (ClassNotFoundException e2) {
 					e2.printStackTrace();
 				}
@@ -348,7 +352,7 @@ public class Model extends JFXPanel {
 			playlist.revalidate();
 			playlist.repaint();
 			} catch (IOException e1) {
-			e1.printStackTrace();
+			logger.write("Error occured while creating playlist " + new_playlist);
 			}
 
 		}
@@ -381,11 +385,11 @@ public class Model extends JFXPanel {
 				update_table(Table_with_data(manager.
 				get_playlist_data(playlist_active)));
 			} catch (FileNotFoundException e1) {
-				e1.printStackTrace();
+				logger.write("Error occured while removing song " + name);
 			} catch (ClassNotFoundException e1) {
-				e1.printStackTrace();
+				logger.write("Error occured while removing song " + name);
 			} catch (IOException e1) {
-				e1.printStackTrace();
+				logger.write("Error occured while removing song " + name);
 			}
 			}
 		}
@@ -426,7 +430,7 @@ public class Model extends JFXPanel {
 			update_table(Table_with_data(data));
 
 			} catch (ClassNotFoundException | IOException e1) {
-			e1.printStackTrace();
+				logger.write("Error occured while fetching playlist " + name);
 			}
 		}
 
@@ -487,7 +491,7 @@ public class Model extends JFXPanel {
 			// Invoke the clear on media manager.
 			manager.clear_songs();
 		} catch (ClassNotFoundException | IOException e) {
-			e.printStackTrace();
+			logger.write("Error occured while clearing songs library");
 		}
 		// update the table of songs.
 		update_table(Table_with_data(manager.get_songs()));
@@ -564,13 +568,15 @@ public class Model extends JFXPanel {
 			song = ImageIO.read(new File(source + "addsong.png"));
 			} catch (IOException e) {
 				//If fails, try reading from the web and save it locally
+				logger.write("Failed to read addsong image from disk");
 				URL songs;
 				try {
+					logger.write("Fetch image from web");
 					songs = new URL("https://i.imgsafe.org/fbc076f79c.png");
 					song = ImageIO.read(songs);
 					ImageIO.write(song, "png", new File(source + "addsong.png"));
 				} catch (IOException e1) {
-					e1.printStackTrace();
+					logger.write("Failed to fetch addsong image from web");
 				}	
 			}
 		
@@ -604,6 +610,7 @@ public class Model extends JFXPanel {
 						} catch (InvalidDataException e) {
 						JOptionPane.showMessageDialog(null, "Invalid MP3 header", 
 								"Alert", JOptionPane.WARNING_MESSAGE);
+						logger.write("Failed to read ID3 Tag for file");
 						}
 					}
 
@@ -650,6 +657,7 @@ public class Model extends JFXPanel {
 			else {
 			JOptionPane.showMessageDialog(null, 
 			"Invalid MP3 header", "Alert", JOptionPane.WARNING_MESSAGE);
+			logger.write("Failed to read ID3 Tag for file");
 			}
 		}
 		
