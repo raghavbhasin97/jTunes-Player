@@ -53,5 +53,9 @@ The best part of this media player is that it's safe. Every measure has been tak
 
 File Paths
 -----------
-
 Data files are stored in .jTunes folder in the user's home directory by fetching the info using `System.getProperty("user.home")`.
+
+Error Logging
+-------------
+
+All exceptions and basic operations are tracked by the `ErrorLog` class object, which has the task of creating a lof file that may help debugging bugs. This file is saved along with other data files in `.jTunes folder`.
