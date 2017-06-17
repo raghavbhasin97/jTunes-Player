@@ -58,4 +58,4 @@ Data files are stored in .jTunes folder in the user's home directory by fetching
 Error Logging
 -------------
 
-All exceptions and basic operations are tracked by the `ErrorLog` class object, which has the task of creating a lof file that may help debugging bugs. This file is saved along with other data files in `.jTunes folder`.
+All exceptions and basic operations are tracked by the `ErrorLog` class object, which has the task of creating a log file that may help in debugging bugs. This file is saved along with other data files in `.jTunes folder`.
